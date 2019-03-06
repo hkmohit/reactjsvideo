@@ -3,6 +3,10 @@ var fs = require('fs');
 module.exports.getVideos = async (req, res, next) => {
 	var files = await fs.readdirSync(__dirname);
 	// console.log("files", files);
+	files = await this.getVideosFromDirectory();
+	res.send(files);
+
+	
 };
 
 module.exports.getVideosFromDirectory = () => {
@@ -17,11 +21,13 @@ module.exports.getVideosFromDirectory = () => {
 			var getFiles = () => {
 				counter++;
 				if (contents[counter]) {
-					let file = contents[counter];
-					var stat = fs.statSync(dir + '/' + file);
+					let fileName = contents[counter];
+					var stat = fs.statSync(dir + '/' + fileName);
+					// console.log('stat', fileName, stat.size);
 					if (stat && stat.isFile()) {
-						file = path + file;
-						files.push({ file, name: `Video${Math.random()}` });
+						let file = path + fileName;
+						let size = stat.size;
+						files.push({ file, size, fileName });
 					}
 					getFiles();
 				}

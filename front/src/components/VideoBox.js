@@ -14,7 +14,7 @@ export default class extends PureComponent {
                         autoPlay={this.props.autoPlay}
                         onEnded={this.props.onEnded}
                     />
-                    <h2>{getFileName(this.props.src)}</h2>
+                    <h2>{getFileName(this.props.fileName)}</h2>
                 </div>
             );
         }

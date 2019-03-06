@@ -14,7 +14,7 @@ export default class extends PureComponent {
                             <video src={data.file} controlsList="nodownload nofullscreen noremoteplayback" />
                         </div>
                         <div className="card-body">
-                            <p className="card-text">{getFileName(data.file)}</p>
+                            <p className="card-text">{getFileName(data.fileName)}</p>
                             <div className="d-flex justify-content-between align-items-center">
                                 <div className="btn-group" onClick={() => { this.props.onPress(data) }}>
                                     <button type="button" className="btn btn-sm btn-outline-secondary">Start Watching</button>
